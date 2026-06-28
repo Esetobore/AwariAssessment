@@ -18,7 +18,7 @@ flutter run
 ## Implementation Details
 
 - **Responsive Design**: Implemented a custom responsive layout system in `lib/core/utils/size_utils.dart` to maintain visual integrity across different screen sizes without external packages.
-- **Architecture**: Follows **Domain-Driven Design (DDD)** principles for clean separation of concerns.
+- **Architecture**: Follows Domain-Driven Design (DDD) with a feature-first approach.
 - **Styling**: Utilizes a centralized `AppTextStyle` and `AppColors` system for consistent branding and aesthetic replication.
 
 ---
