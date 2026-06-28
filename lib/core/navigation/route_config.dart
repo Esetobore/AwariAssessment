@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../feature/entry/presentation/screens/entry_screen.dart';
+import '../../feature/home/domain/entities/product.dart';
+import '../../feature/home/presentation/screens/home_screen.dart';
+import '../../feature/home/presentation/screens/product_screen.dart';
 import 'route_enum.dart';
 
 /// Central route factory consumed by [MaterialApp.onGenerateRoute].
@@ -13,19 +17,21 @@ abstract final class RouteConfig {
     // Entry (splash / landing)
     switch (route) {
       case RouteEnum.entry:
-        return _fade(settings, const Placeholder());
+        return _fade(settings, const EntryScreen());
 
       // Home (product catalogue)
       case RouteEnum.home:
-        return _fade(settings, const Placeholder());
+        return _fade(settings, const HomeScreen());
 
       //Product detail
       case RouteEnum.product:
-        return _slideFromRight(settings, const Placeholder());
+        assert(settings.arguments is Product, 'ProductScreen requires a Product argument via Navigator.pushNamed');
+        final product = settings.arguments as Product;
+        return _slideFromRight(settings, ProductScreen(product: product));
 
       //Fallback
       default:
-        return _fade(settings, const Placeholder());
+        return _fade(settings, const EntryScreen());
     }
   }
 

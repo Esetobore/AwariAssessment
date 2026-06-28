@@ -8,6 +8,7 @@ abstract final class AppColors {
   // Backgrounds
   /// Warm cream — the app-wide scaffold background.
   static const Color background = Color(0xFFF0EAE0);
+  static const Color darkScaffold = Color(0xFF141414);
 
   /// Pure white — cards, search bar, bottom nav.
   static const Color surface = Color(0xFFFFFFFF);
@@ -22,7 +23,7 @@ abstract final class AppColors {
   static const Color accent = Color(0xFFCBA882);
 
   /// Soft warm beige — "Add to cart" button fill.
-  static const Color accentSoft = Color(0xFFEDE0CE);
+  static const Color accentSoft = Color(0xFFEDE9CE);
 
   // Category chips
   static const Color chipSelectedBg = Color(0xFF1A1A1A);

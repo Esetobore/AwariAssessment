@@ -85,7 +85,7 @@ abstract final class AppTextStyle {
     color: AppColors.textSecondary,
   );
 
-  static const TextStyle searchHint = TextStyle(fontFamily: _sans, fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textSecondary);
+  static const TextStyle searchHint = TextStyle(fontFamily: _sans, fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textPrimary);
 
   static const TextStyle buttonLabel = TextStyle(
     fontFamily: _sans,

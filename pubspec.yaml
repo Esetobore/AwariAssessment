@@ -51,29 +51,23 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - assets/images/
 
-assets:
- - images/
-
-
-fonts:
- - family: CormorantGaramond       # brand wordmark
-   fonts:
-     - asset: assets/fonts/CormorantGaramond-Regular.ttf
-     - asset: assets/fonts/CormorantGaramond-SemiBold.ttf
-       weight: 600
-     - asset: assets/fonts/CormorantGaramond-Bold.ttf
-       weight: 700
- - family: DMSans                  # body / UI copy
-   fonts:
-     - asset: assets/fonts/DMSans-Regular.ttf
-     - asset: assets/fonts/DMSans-Medium.ttf
-       weight: 500
-     - asset: assets/fonts/DMSans-Bold.ttf
-       weight: 700
+  fonts:
+    - family: CormorantGaramond
+      fonts:
+        - asset: assets/fonts/CormorantGaramond-Regular.ttf
+        - asset: assets/fonts/CormorantGaramond-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/CormorantGaramond-Bold.ttf
+          weight: 700
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/DMSans-Bold.ttf
+          weight: 700

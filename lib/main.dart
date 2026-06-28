@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Awari Assessment',
       theme: AppTheme.light,
       initialRoute: RouteConfig.initial,
+      debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteConfig.onGenerateRoute,
     );
   }

@@ -2,7 +2,7 @@ abstract final class AppImages {
   AppImages._();
 
   // Entry Carousel
-  static const String carousel = 'assets/images/entry_banner.jpg';
+  static const String entryBanner = 'assets/images/entry_banner.jpg';
 
   // Product: Men's Fleece Pullover Hoodie
   static const List<String> pulloverHoodie = ['assets/images/pulloverHoodie-1.jpg', 'assets/images/pulloverHoodie-2.jpg'];
