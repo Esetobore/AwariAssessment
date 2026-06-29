@@ -129,23 +129,51 @@ class _Marquee extends StatefulWidget {
 }
 
 class _MarqueeState extends State<_Marquee> {
-  late final double _textWidth;
-  late final double _textHeight;
+  final _textKey = GlobalKey();
+  double _textWidth = 0;
+  double _textHeight = 0;
 
   @override
   void initState() {
     super.initState();
-    final tp = TextPainter(
-      text: TextSpan(text: widget.text, style: widget.style),
-      textDirection: TextDirection.ltr,
-      maxLines: 1,
-    )..layout(maxWidth: double.infinity);
-    _textWidth = tp.width;
-    _textHeight = tp.height;
+    WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+  }
+
+  void _measure() {
+    if (!mounted) return;
+    final ctx = _textKey.currentContext;
+    if (ctx == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+      return;
+    }
+    final box = ctx.findRenderObject() as RenderBox?;
+    if (box == null || !box.hasSize) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+      return;
+    }
+    final size = box.size;
+    if (size.width > 0 && size.height > 0) {
+      setState(() {
+        _textWidth = size.width;
+        _textHeight = size.height;
+      });
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _measure());
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (_textWidth == 0) {
+      return Opacity(
+        opacity: 0,
+        child: UnconstrainedBox(
+          alignment: Alignment.centerLeft,
+          child: Text(key: _textKey, widget.text, style: widget.style, maxLines: 1, softWrap: false),
+        ),
+      );
+    }
+
     const gap = 80.0;
     final total = _textWidth + gap;
 
@@ -155,17 +183,22 @@ class _MarqueeState extends State<_Marquee> {
         height: _textHeight,
         child: AnimatedBuilder(
           animation: widget.controller,
-          builder: (_, child) {
+          builder: (_, __) {
             final offset = widget.controller.value * total;
             return Stack(
               clipBehavior: Clip.none,
               children: [
-                Positioned(left: -offset, child: child!),
-                Positioned(left: total - offset, child: child),
+                Positioned(
+                  left: -offset,
+                  child: Text(widget.text, style: widget.style, maxLines: 1, softWrap: false),
+                ),
+                Positioned(
+                  left: total - offset,
+                  child: Text(widget.text, style: widget.style, maxLines: 1, softWrap: false),
+                ),
               ],
             );
           },
-          child: Text(widget.text, style: widget.style, maxLines: 1, softWrap: false),
         ),
       ),
     );
